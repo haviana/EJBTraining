@@ -24,13 +24,19 @@ public class MinhaSessao implements MinhaSessaoRemote {
     // "Insert Code > Add Business Method")
 
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.NEVER)
     public String obterNomeCliente(Integer numeroCliente) {
+        logAuditoria();
         return "Nome Cliente";
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public long registarCliente(String nome, Date data, String distrito, String concelho, Integer telefone) {
         return 0L;
+    }
+
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public void logAuditoria() {
+       
     }
 }
