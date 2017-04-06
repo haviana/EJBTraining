@@ -5,6 +5,7 @@
  */
 package entappclient;
 
+import ejb.Cliente;
 import ejb.MinhaSessaoRemote;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -26,9 +27,12 @@ public class Main {
         String destrito = "Setubal";
         String concelho = "Almada";
         String nome = "Hugo";
+        Cliente cli = new Cliente();
+        cli.setNome(nome);
+        cli.setDistrito(destrito);
+        cli.setConcelho(concelho);
         // TODO code application logic here
-        System.err.println("result = " + minhaSessao.obterNomeCliente(Integer.MIN_VALUE));
+        System.err.println("result = " + minhaSessao.obterNomeCliente(cli));
         System.err.println("result = " + minhaSessao.registarCliente(nome, new Date(), destrito, concelho, 0));
-    }
-    
+    } 
 }

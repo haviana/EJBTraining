@@ -11,6 +11,9 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 
 /**
  *
@@ -19,15 +22,13 @@ import javax.ejb.TransactionManagementType;
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class MinhaSessao implements MinhaSessaoRemote {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
+@PersistenceContext
+    private EntityManager em;
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    public String obterNomeCliente(Integer numeroCliente) {
+    public Cliente obterNomeCliente(Cliente cliente) {
         logAuditoria();
-        return "Nome Cliente";
+        return em.find(ejb.Cliente.class, cliente);
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
