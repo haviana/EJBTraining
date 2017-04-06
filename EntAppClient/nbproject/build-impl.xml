@@ -785,15 +785,18 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="compile" if="is.server.weblogic" name="library-inclusion-in-archive">
         <basename file="${reference.EJBRemoteInterfaceCliente.jar}" property="manifest.reference.EJBRemoteInterfaceCliente.jar"/>
+        <basename file="${libs.eclipselink.classpath}" property="manifest.libs.eclipselink.classpath"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.reference.EJBRemoteInterfaceCliente.jar}"/>
+            <attribute name="jar-2-Extension-Name" value="${manifest.libs.eclipselink.classpath}"/>
         </manifest>
     </target>
     <target depends="compile" if="dist.ear.dir" name="library-inclusion-in-manifest">
         <copyfiles files="${reference.EJBRemoteInterfaceCliente.jar}" manifestproperty="manifest.reference.EJBRemoteInterfaceCliente.jar" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${libs.eclipselink.classpath}" manifestproperty="manifest.libs.eclipselink.classpath" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${manifest.reference.EJBRemoteInterfaceCliente.jar} lib/${manifest.reference.EJBRemoteInterfaceCliente.jar} "/>
+            <attribute name="Class-Path" value="${manifest.reference.EJBRemoteInterfaceCliente.jar} lib/${manifest.reference.EJBRemoteInterfaceCliente.jar} ${manifest.libs.eclipselink.classpath} lib/${manifest.libs.eclipselink.classpath} "/>
         </manifest>
     </target>
     <target name="-copy-meta-inf">

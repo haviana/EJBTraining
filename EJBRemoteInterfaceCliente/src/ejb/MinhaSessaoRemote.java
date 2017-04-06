@@ -19,6 +19,7 @@ public interface MinhaSessaoRemote {
     public long registarCliente(String nome, Date data, String distrito, String concelho, Integer telefone);
 
     public String obterNomeCliente(Integer numeroCliente);
-
+    
+    public void logAuditoria() ;
     
 }

@@ -24,7 +24,7 @@ public class MinhaSessao implements MinhaSessaoRemote {
     // "Insert Code > Add Business Method")
 
 
-    @TransactionAttribute(TransactionAttributeType.NEVER)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public String obterNomeCliente(Integer numeroCliente) {
         logAuditoria();
         return "Nome Cliente";
@@ -35,7 +35,7 @@ public class MinhaSessao implements MinhaSessaoRemote {
         return 0L;
     }
 
-    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void logAuditoria() {
        
     }
