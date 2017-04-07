@@ -5,8 +5,7 @@
  */
 package entappclient;
 
-import javax.persistence.Entity.Cliente;
-import ejb.MinhaSessaoRemote;
+    
 import java.util.Date;
 import javax.ejb.EJB;
 
@@ -17,7 +16,7 @@ import javax.ejb.EJB;
 public class Main {
 
     @EJB
-    private static MinhaSessaoRemote minhaSessao;
+    private static  minhaSessao;
     
     
     /**
