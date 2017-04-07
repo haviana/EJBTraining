@@ -37,6 +37,6 @@ public class Main {
         // TODO code application logic here
         System.out.println("Hello World");
         System.err.println("result = " + minhaSessao.obterNomeCliente(cli));
-        //System.err.println("result = " + minhaSessao.registarCliente(nome, new Date(), destrito, concelho, 0));
+        System.err.println("result = " + minhaSessao.registarCliente(nome, new Date(), distrito, concelho, 0));
     } 
 }

@@ -23,18 +23,24 @@ import javax.persistence.PersistenceContext;
 @Stateless 
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class MinhaSessaoBean implements MinhaSessaoRemote {
-@PersistenceContext
+
+@PersistenceContext(unitName="FormacaoPU")
     private EntityManager em;
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Cliente obterNomeCliente(Cliente cliente) {
         //logAuditoria();
+        
         return em.find(Entity.Cliente.class, cliente.getIdCliente());
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public long registarCliente(String nome, Date data, String distrito, String concelho, Integer telefone) {
-        return 0L;
+        Cliente cli = new Cliente(nome,data,distrito,concelho,telefone);
+        
+        em.persist(cli);
+        em.flush();
+        return cli.getIdCliente();
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)

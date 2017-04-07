@@ -57,6 +57,8 @@ public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+ 
+
 
     @Override
     public int hashCode() {
@@ -121,14 +123,14 @@ public class Cliente implements Serializable {
     }
 
     public Cliente() {
+        
     }
 
     public Cliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 
-    public Cliente(Long idCliente, String nome, Date data, String distrito, String concelho, int telefone) {
-        this.idCliente = idCliente;
+    public Cliente(String nome, Date data, String distrito, String concelho, int telefone) {
         this.nome = nome;
         this.data = data;
         this.distrito = distrito;
