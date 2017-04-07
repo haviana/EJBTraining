@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Altran
  */
-@Stateless (mappedName = "FirstEJB/Remote")
+@Stateless 
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class MinhaSessaoBean implements MinhaSessaoRemote {
 @PersistenceContext
@@ -28,8 +28,8 @@ public class MinhaSessaoBean implements MinhaSessaoRemote {
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Cliente obterNomeCliente(Cliente cliente) {
-        logAuditoria();
-        return em.find(Entity.Cliente.class, cliente);
+        //logAuditoria();
+        return em.find(Entity.Cliente.class, cliente.getIdCliente());
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
